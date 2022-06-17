@@ -4,7 +4,10 @@ import { useState } from "react";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import { Ionicons } from "@expo/vector-icons";
-
+import { NavigationContainer } from "@react-navigation/native";
+import TabsNav from "./navigators/TabsNav";
+import { ApolloProvider } from "@apollo/client";
+import client from "./apollo";
 export default function App() {
   const [loading, setLoading] = useState(true);
   const onFinish = () => setLoading(false);
@@ -25,8 +28,10 @@ export default function App() {
     );
   }
   return (
-    <View>
-      <Text>Nomad Coffee</Text>
-    </View>
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <TabsNav />
+      </NavigationContainer>
+    </ApolloProvider>
   );
 }

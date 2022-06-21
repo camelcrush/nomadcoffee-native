@@ -7,16 +7,25 @@ import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import TabsNav from "./navigators/TabsNav";
 import { ApolloProvider } from "@apollo/client";
-import client from "./apollo";
+import client, { isLoggedInVar, tokenVar } from "./apollo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function App() {
   const [loading, setLoading] = useState(true);
   const onFinish = () => setLoading(false);
-  const preload = () => {
+  const preloadAssets = () => {
     const fontsToLoad = [Ionicons.font];
     const fontsPromise = fontsToLoad.map((font) => Font.loadAsync(font));
     const imagesToLoad = [require("./assets/logo.jpg")];
     const imagesPromise = imagesToLoad.map((image) => Asset.loadAsync(image));
     return Promise.all([...fontsPromise, ...imagesPromise]);
+  };
+  const preload = async () => {
+    const token = await AsyncStorage.getItem("token");
+    if (token) {
+      isLoggedInVar(true);
+      tokenVar(token);
+    }
+    return preloadAssets();
   };
   if (loading) {
     return (

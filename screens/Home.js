@@ -40,7 +40,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
-    await refetch;
+    await refetch();
     setRefreshing(false);
   };
   const renderCoffeeShop = ({ item: coffeeShop }) => {

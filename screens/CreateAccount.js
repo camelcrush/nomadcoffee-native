@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { KeyboardAvoidingView } from "react-native";
 import { colors } from "../colors";
 import AuthButton from "../components/auth/AuthButton";
 import AuthLayout from "../components/auth/AuthLayout";
@@ -75,6 +76,7 @@ const CreateAccount = ({ navigation }) => {
         placeholder="Username"
         placeholderTextColor={colors.bgColor}
         autoCapitalize="none"
+        autoCorrect={false}
         returnKeyType="next"
         onChangeText={(text) => setValue("username", text)}
         onSubmitEditing={() => onNext(emailRef)}
@@ -85,6 +87,7 @@ const CreateAccount = ({ navigation }) => {
         placeholder="Email"
         placeholderTextColor={colors.bgColor}
         autoCapitalize="none"
+        autoCorrect={false}
         returnKeyType="next"
         keyboardType="email-address"
         onChangeText={(text) => setValue("email", text)}
@@ -96,6 +99,7 @@ const CreateAccount = ({ navigation }) => {
         placeholder="Name"
         placeholderTextColor={colors.bgColor}
         autoCapitalize="none"
+        autoCorrect={false}
         returnKeyType="next"
         onChangeText={(text) => setValue("name", text)}
         onSubmitEditing={() => onNext(locationRef)}
@@ -106,6 +110,7 @@ const CreateAccount = ({ navigation }) => {
         placeholder="Location"
         placeholderTextColor={colors.bgColor}
         autoCapitalize="none"
+        autoCorrect={false}
         returnKeyType="next"
         onChangeText={(text) => setValue("location", text)}
         onSubmitEditing={() => onNext(githubUsernameRef)}

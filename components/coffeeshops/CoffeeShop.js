@@ -5,7 +5,7 @@ import { colors } from "../../colors";
 
 const Container = styled.View``;
 const Header = styled.View`
-  padding: 10px;
+  padding: 5px 10px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,18 @@ const Location = styled.Text`
   font-size: 12px;
   color: "rgba(0,0,0,0.8)";
 `;
-const UserBox = styled.View``;
+const UserBox = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+const Avatar = styled.Image`
+  width: 25px;
+  height: 25px;
+  background-color: black;
+  border-radius: 20px;
+  margin-right: 10px;
+`;
 const Username = styled.Text`
   font-weight: 600;
 `;
@@ -55,13 +66,14 @@ const CoffeeShop = ({
           </Location>
         </CoffeShopBox>
         <UserBox>
+          <Avatar source={{ uri: user.avatarUrl }} />
           <Username>{user.username}</Username>
         </UserBox>
       </Header>
       <Photo
         resizeMode="cover"
         source={{ uri: photos[0].url }}
-        style={{ width, height: 250 }}
+        style={{ width, height: height / 3 }}
       />
       <Bottom>
         <CategoriesBox>

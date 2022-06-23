@@ -1,4 +1,5 @@
 import React from "react";
+import { KeyboardAvoidingView } from "react-native";
 import styled from "styled-components/native";
 import DissmissKeyboard from "../DissmissKeyboard";
 
@@ -21,8 +22,17 @@ const AuthLayout = ({ children }) => {
   return (
     <DissmissKeyboard>
       <Container>
-        <Logo source={require("../../assets/logo.jpg")} resizeMode="contain" />
-        {children}
+        <KeyboardAvoidingView
+          style={{ width: "100%", alignItems: "center" }}
+          behavior="padding"
+          keyboardVerticalOffset={50}
+        >
+          <Logo
+            source={require("../../assets/logo.jpg")}
+            resizeMode="contain"
+          />
+          {children}
+        </KeyboardAvoidingView>
       </Container>
     </DissmissKeyboard>
   );

@@ -9,6 +9,7 @@ const DissmissKeyboard = ({ children }) => {
   };
   return (
     <TouchableWithoutFeedback
+      style={{ flex: 1 }}
       onPress={dissmissKeyboard}
       disabled={Platform.OS === "web"}
     >

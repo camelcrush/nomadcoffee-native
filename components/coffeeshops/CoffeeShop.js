@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { useWindowDimensions } from "react-native";
 import styled from "styled-components/native";
@@ -11,7 +12,7 @@ const Header = styled.View`
   align-items: center;
   width: 100%;
 `;
-const CoffeShopBox = styled.View``;
+const CoffeShopBox = styled.TouchableOpacity``;
 const Name = styled.Text`
   font-weight: 600;
 `;
@@ -56,10 +57,17 @@ const CoffeeShop = ({
   categories,
 }) => {
   const { width, height } = useWindowDimensions();
+  const navigation = useNavigation();
+  const goToScreen = () => {
+    navigation.navigate("SeeCoffeeShop", {
+      id,
+      name,
+    });
+  };
   return (
     <Container>
       <Header>
-        <CoffeShopBox>
+        <CoffeShopBox onPress={goToScreen}>
           <Name>{name}</Name>
           <Location>
             {latitude}, {longitude}

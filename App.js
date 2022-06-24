@@ -1,14 +1,13 @@
-import { Text, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useState } from "react";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
-import TabsNav from "./navigators/TabsNav";
 import { ApolloProvider } from "@apollo/client";
 import client, { isLoggedInVar, tokenVar } from "./apollo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import MainStackNav from "./navigators/MainStackNav";
 export default function App() {
   const [loading, setLoading] = useState(true);
   const onFinish = () => setLoading(false);
@@ -39,7 +38,7 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <TabsNav />
+        <MainStackNav />
       </NavigationContainer>
     </ApolloProvider>
   );

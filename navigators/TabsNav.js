@@ -26,6 +26,7 @@ const TabsNav = () => (
         tabBarIcon: ({ focused, color, size }) => (
           <Ionicons name="home-outline" color={color} size={size} />
         ),
+        headerTitle: "Nomad Coffee",
       }}
     />
     <Tabs.Screen
